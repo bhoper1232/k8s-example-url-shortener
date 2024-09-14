@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    environment:
+      MONGODB_INIT_DB: keycloak
+    volumes:
+      - mongodb-storage:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - network
+
+networks:
+  network:
+    driver: bridge
+
+volumes:
+  mongodb-storage:

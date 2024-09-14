@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #4a90e2;
+        }
+
+        header p {
+            margin-bottom: 30px;
+            font-weight: 300;
+            color: #777;
+        }
+
+        .url-shortener {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .url-shortener input {
+            flex: 1;
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin-right: 10px;
+            outline: none;
+        }
+
+        .url-shortener button {
+            padding: 10px 20px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .url-shortener button:hover {
+            background-color: #357abd;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>URL Shortener</h1>
+        <p>Enter your long URL below and get a shorter one!</p>
+    </header>
+
+    <form data-th-action="@{/create}" method="post">
+        <div class="url-shortener">
+            <input type="text" id="long-url" name="originalUrl" placeholder="Enter your long URL" data-th-value="${urlModel?.originalUrl}" required>
+            <button id="shorten-btn" type="submit">Shorten</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
