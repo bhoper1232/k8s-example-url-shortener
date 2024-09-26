@@ -19,7 +19,7 @@ public class UrlController {
 
     private final UrlClient urlClient;
 
-    @GetMapping("/create")
+    @GetMapping("/")
     public String homePage(Model model) {
         model.addAttribute("urlModel", new UrlModel());
         return "create-short-url";

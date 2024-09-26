@@ -9,7 +9,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.Map;
 
-@FeignClient(name = "url-shortener", url = "http://localhost:8080")
+@FeignClient(name = "url-shortener", url = "http://url-shortener-rest")
 public interface UrlClient {
 
     @PostMapping("/api/url/shorten")

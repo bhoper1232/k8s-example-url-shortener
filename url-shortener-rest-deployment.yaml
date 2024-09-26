@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: url-shortener-rest
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: url-shortener-rest
+  template:
+    metadata:
+      labels:
+        app: url-shortener-rest
+    spec:
+      containers:
+      - name: url-shortener-rest
+        image: "bhoper/url-shortener-rest:latest"
+        resources:
+          limits:
+            memory: "800Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_DATA_MONGODB_URI
+          value: mongodb://admin:password@mongodb:27017/your-database-name?authSource=admin
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: url-shortener-rest
+spec:
+  type: ClusterIP
+  selector:
+    app: url-shortener-rest
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
