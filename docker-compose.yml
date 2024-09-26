@@ -4,7 +4,7 @@ services:
     container_name: mongodb
     image: mongo:latest
     environment:
-      MONGODB_INIT_DB: keycloak
+      MONGODB_INIT_DB: urls
     volumes:
       - mongodb-storage:/data/db
     ports:
