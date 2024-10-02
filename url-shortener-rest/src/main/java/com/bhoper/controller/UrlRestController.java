@@ -26,4 +26,8 @@ public class UrlRestController {
         return new RedirectView(originUrl);
     }
 
+    @GetMapping("/originalUrl")
+    public String getOriginalUrl(@RequestParam String shortUrl) {
+        return this.urlModelService.getOriginalUrl(shortUrl);
+    }
 }
