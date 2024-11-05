@@ -11,6 +11,8 @@ spec:
       labels:
         app: mongodb
     spec:
+      volumes:
+        - name: mongodb-data
       containers:
       - name: mongodb
         image: "mongo:latest"
@@ -28,8 +30,6 @@ spec:
         volumeMounts:
         - name: mongodb-data
           mountPath: /data/db
-      volumes:
-      - name: mongodb-data
 ---
 
 apiVersion: v1
